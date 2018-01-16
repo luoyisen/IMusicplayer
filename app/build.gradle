@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "io.hefuyi.listener"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0b"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
+        resConfigs "zh", "en"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            versionNameSuffix "_debug"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:animated-vector-drawable:26.1.0'
+    compile 'com.android.support:support-v13:26.1.0'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:palette-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+
+    //rxjava
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.3.0'
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'    //retrofit2
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    //materialicon
+    compile 'net.steamcrafted:materialiconlib:1.1.1'
+    //leakcanary
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+//    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //stetho
+//    compile 'com.facebook.stetho:stetho:1.4.1'
+//    compile 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+    //dagger2
+    compile 'com.google.dagger:dagger:2.8'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    //materialdialogs
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    //imageloader
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    //slidinguppanel
+    compile 'com.sothree.slidinguppanel:library:3.3.1'
+    //app theme engine
+    compile('com.github.naman14:app-theme-engine:0.5.2@aar') {
+        transitive = true
+    }
+
+}
+
+//andResGuard {
+//    // mappingFile = file("./resource_mapping.txt")
+//    mappingFile = null
+//    use7zip = true
+//    useSign = true
+//    // 打开这个开关，会keep住所有资源的原始路径，只混淆资源的名字
+//    keepRoot = false
+//    whiteList = [
+//            // for your icon
+//            "R.mipmap.ic_launcher",
+//    ]
+//    compressFilePattern = [
+//            "*.png",
+//            "*.jpg",
+//            "*.jpeg",
+//            "*.gif",
+//            "resources.arsc"
+//    ]
+//    sevenzip {
+//        artifact = 'com.tencent.mm:SevenZip:1.2.0'
+//        //path = "/usr/local/bin/7za"
+//    }
+//}
